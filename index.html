@@ -113,9 +113,9 @@
             <div class="reveal flex justify-center lg:justify-end pr-0 lg:pr-16 relative z-10 mt-8 lg:mt-0">
                 <div class="relative inline-block w-full max-w-[360px] md:max-w-[460px]">
                     <!-- Left Flower -->
-                    <div id="flower-left" class="absolute top-[5%] -left-[30px] md:-left-[180px] w-[80px] md:w-[200px] h-[300px] md:h-[500px] pointer-events-none z-20"></div>
+                    <div id="flower-left" class="absolute top-[5%] -left-[40px] md:-left-[180px] pointer-events-none z-20" style="width: 200px; height: 500px;"></div>
                     <!-- Right Flower -->
-                    <div id="flower-right" class="absolute top-[5%] -right-[30px] md:-right-[180px] w-[80px] md:w-[200px] h-[300px] md:h-[500px] pointer-events-none z-20" style="transform: scaleX(-1);"></div>
+                    <div id="flower-right" class="absolute top-[5%] -right-[40px] md:-right-[180px] pointer-events-none z-20" style="width: 200px; height: 500px; transform: scaleX(-1);"></div>
                     
                     <div class="w-full aspect-[4/5] image-container overflow-hidden shadow-xl relative ring-4 ring-white/30 dark:ring-white/10 z-10">
                         <img src="janki_photo.jpeg" alt="Janki" class="w-full h-full object-cover object-top" />
@@ -326,10 +326,17 @@
                     entries.forEach(e => {
                         if(e.isIntersecting && !e.target.drawn) {
                             e.target.drawn = true;
-                            // Set a small delay for dramatic effect
+                            // Ensure inline styles are set in pixels as required by Flw library
+                            if (!e.target.style.width) e.target.style.width = '200px';
+                            if (!e.target.style.height) e.target.style.height = '500px';
+                            
                             setTimeout(() => {
-                                Flw.LimitedFlower.create(e.target, flowerOptions, true);
-                            }, 500);
+                                try {
+                                    Flw.LimitedFlower.create(e.target, flowerOptions, true);
+                                } catch (err) {
+                                    console.error('Flower creation failed:', err);
+                                }
+                            }, 300);
                         }
                     });
                 }, { threshold: 0.1 });

@@ -215,10 +215,17 @@
                     entries.forEach(e => {
                         if(e.isIntersecting && !e.target.drawn) {
                             e.target.drawn = true;
-                            // Set a small delay for dramatic effect
+                            // Ensure inline styles are set in pixels as required by Flw library
+                            if (!e.target.style.width) e.target.style.width = '200px';
+                            if (!e.target.style.height) e.target.style.height = '500px';
+                            
                             setTimeout(() => {
-                                Flw.LimitedFlower.create(e.target, flowerOptions, true);
-                            }, 500);
+                                try {
+                                    Flw.LimitedFlower.create(e.target, flowerOptions, true);
+                                } catch (err) {
+                                    console.error('Flower creation failed:', err);
+                                }
+                            }, 300);
                         }
                     });
                 }, { threshold: 0.1 });
