@@ -399,7 +399,7 @@ pages['about.html'] = ("about", """
             </p>
             <div class="inline-flex items-center gap-3 bg-white/60 dark:bg-slate-800/60 backdrop-blur px-8 py-4 rounded-full border border-bloom-pink/30 dark:border-white/10 shadow-sm mt-8">
                 <span class="material-symbols-outlined text-bloom-pink">cake</span>
-                <span class="font-serif text-xl text-bloom-pink font-medium">March 8, 2002</span>
+                <span class="font-serif text-xl text-bloom-pink font-medium">March 7, 2002</span>
             </div>
             <div class="inline-flex items-center gap-3 bg-white/60 dark:bg-slate-800/60 backdrop-blur px-8 py-4 rounded-full border border-bloom-pink/30 dark:border-white/10 shadow-sm mt-4 ml-4">
                 <span class="material-symbols-outlined text-bloom-pink">location_on</span>
@@ -472,7 +472,7 @@ pages['memories.html'] = ("memories", """
                     <span class="material-symbols-outlined text-sm">stars</span>
                 </div>
                 <div class="reveal glass-card w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-2xl shadow-sm">
-                    <time class="font-serif text-bloom-pink font-semibold mb-1">March 8, 2002</time>
+                    <time class="font-serif text-bloom-pink font-semibold mb-1">March 7, 2002</time>
                     <div class="text-bloom-text dark:text-slate-300 font-medium">A flower bloomed in Jodhpur. Happy Birthday Janki!</div>
                 </div>
             </div>
