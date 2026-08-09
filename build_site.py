@@ -21,12 +21,6 @@ head = """<!DOCTYPE html>
             }
         }
         
-        // Initial Theme Check
-        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
     </script>
     <style type="text/tailwindcss">
         @layer utilities {
@@ -95,11 +89,6 @@ def get_navbar(active_page):
             <a href="littlethings.html" class="text-sm font-medium transition-colors {a('little')}">Little Things</a>
         </div>
         <div class="flex items-center gap-4">
-            <!-- Theme Toggle -->
-            <button id="theme-toggle" class="w-10 h-10 rounded-full bg-white/50 dark:bg-slate-800 flex items-center justify-center text-bloom-pink shadow-sm hover:shadow-md transition-all">
-                <span class="material-symbols-outlined text-xl dark:hidden">dark_mode</span>
-                <span class="material-symbols-outlined text-xl hidden dark:block">light_mode</span>
-            </button>
             <button id="menu-btn" class="md:hidden text-bloom-pink p-2"><span class="material-symbols-outlined text-[28px]">menu</span></button>
         </div>
     </nav>
@@ -166,17 +155,6 @@ footer = """
             reveals.forEach(r => observer.observe(r));
             setTimeout(() => reveals.forEach(r => { if(r.getBoundingClientRect().top < window.innerHeight) r.classList.add('active'); }), 100);
 
-            // Dark Mode Toggle
-            const themeToggleBtn = document.getElementById('theme-toggle');
-            themeToggleBtn.addEventListener('click', function() {
-                if (document.documentElement.classList.contains('dark')) {
-                    document.documentElement.classList.remove('dark');
-                    localStorage.setItem('theme', 'light');
-                } else {
-                    document.documentElement.classList.add('dark');
-                    localStorage.setItem('theme', 'dark');
-                }
-            });
 
             // Background Music
             const musicBtn = document.getElementById('music-toggle');
