@@ -285,6 +285,80 @@ footer = """
                 
                 petalContainer.appendChild(petal);
             }
+            
+            // --- SPA / PJAX Routing Script ---
+            document.addEventListener('click', async (e) => {
+                const link = e.target.closest('a');
+                if (!link) return;
+                
+                const href = link.getAttribute('href');
+                // Only intercept internal links ending in .html
+                if (href && href.endsWith('.html') && !href.startsWith('http')) {
+                    e.preventDefault();
+                    await loadPage(href);
+                    window.history.pushState(null, '', href);
+                    updateActiveNav(href);
+                }
+            });
+
+            window.addEventListener('popstate', async () => {
+                const href = location.pathname.split('/').pop() || 'index.html';
+                await loadPage(href);
+                updateActiveNav(href);
+            });
+
+            async function loadPage(href) {
+                try {
+                    const res = await fetch(href);
+                    const html = await res.text();
+                    
+                    // Extract main content
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const newMain = doc.getElementById('main-content');
+                    
+                    if (newMain) {
+                        const currentMain = document.getElementById('main-content');
+                        // Fade out
+                        currentMain.style.opacity = 0;
+                        currentMain.style.transition = 'opacity 0.3s ease';
+                        
+                        setTimeout(() => {
+                            currentMain.innerHTML = newMain.innerHTML;
+                            document.title = doc.title;
+                            window.scrollTo(0, 0);
+                            
+                            // Re-initialize reveals
+                            const reveals = document.querySelectorAll('.reveal');
+                            reveals.forEach(r => observer.observe(r));
+                            setTimeout(() => reveals.forEach(r => { if(r.getBoundingClientRect().top < window.innerHeight) r.classList.add('active'); }), 100);
+                            
+                            // Fade in
+                            currentMain.style.opacity = 1;
+                        }, 300);
+                    }
+                } catch (error) {
+                    console.error('Page load failed:', error);
+                    window.location.href = href; // Fallback
+                }
+            }
+
+            function updateActiveNav(href) {
+                const links = document.querySelectorAll('nav a');
+                links.forEach(link => {
+                    if (link.getAttribute('href') === href) {
+                        link.className = 'text-sm font-medium transition-colors text-bloom-pink border-b border-bloom-pink pb-1';
+                    } else {
+                        link.className = 'text-sm font-medium transition-colors text-bloom-text dark:text-slate-300 hover:text-bloom-pink dark:hover:text-bloom-pink';
+                    }
+                });
+                // Close mobile menu if open
+                const mobileMenu = document.getElementById('mobile-menu');
+                if (mobileMenu && !mobileMenu.classList.contains('hidden-menu')) {
+                    document.getElementById('menu-btn').click();
+                }
+            }
+            // --- End SPA Routing Script ---
         });
     </script>
 </body>
@@ -429,80 +503,6 @@ pages['index.html'] = ("home", """
                 appendMessage("Oops! My magical connection faded. 🌸", 'bot');
             }
         });
-            
-            // --- SPA / PJAX Routing Script ---
-            document.addEventListener('click', async (e) => {
-                const link = e.target.closest('a');
-                if (!link) return;
-                
-                const href = link.getAttribute('href');
-                // Only intercept internal links ending in .html
-                if (href && href.endsWith('.html') && !href.startsWith('http')) {
-                    e.preventDefault();
-                    await loadPage(href);
-                    window.history.pushState(null, '', href);
-                    updateActiveNav(href);
-                }
-            });
-
-            window.addEventListener('popstate', async () => {
-                const href = location.pathname.split('/').pop() || 'index.html';
-                await loadPage(href);
-                updateActiveNav(href);
-            });
-
-            async function loadPage(href) {
-                try {
-                    const res = await fetch(href);
-                    const html = await res.text();
-                    
-                    // Extract main content
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(html, 'text/html');
-                    const newMain = doc.getElementById('main-content');
-                    
-                    if (newMain) {
-                        const currentMain = document.getElementById('main-content');
-                        // Fade out
-                        currentMain.style.opacity = 0;
-                        currentMain.style.transition = 'opacity 0.3s ease';
-                        
-                        setTimeout(() => {
-                            currentMain.innerHTML = newMain.innerHTML;
-                            document.title = doc.title;
-                            window.scrollTo(0, 0);
-                            
-                            // Re-initialize reveals
-                            const reveals = document.querySelectorAll('.reveal');
-                            reveals.forEach(r => observer.observe(r));
-                            setTimeout(() => reveals.forEach(r => { if(r.getBoundingClientRect().top < window.innerHeight) r.classList.add('active'); }), 100);
-                            
-                            // Fade in
-                            currentMain.style.opacity = 1;
-                        }, 300);
-                    }
-                } catch (error) {
-                    console.error('Page load failed:', error);
-                    window.location.href = href; // Fallback
-                }
-            }
-
-            function updateActiveNav(href) {
-                const links = document.querySelectorAll('nav a');
-                links.forEach(link => {
-                    if (link.getAttribute('href') === href) {
-                        link.className = 'text-sm font-medium transition-colors text-bloom-pink border-b border-bloom-pink pb-1';
-                    } else {
-                        link.className = 'text-sm font-medium transition-colors text-bloom-text dark:text-slate-300 hover:text-bloom-pink dark:hover:text-bloom-pink';
-                    }
-                });
-                // Close mobile menu if open
-                const mobileMenu = document.getElementById('mobile-menu');
-                if (mobileMenu && !mobileMenu.classList.contains('hidden-menu')) {
-                    document.getElementById('menu-btn').click();
-                }
-            }
-            // --- End SPA Routing Script ---
     </script>
 """)
 
