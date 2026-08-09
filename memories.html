@@ -124,10 +124,28 @@
     </section>
 
     <!-- Background Music -->
-    <button id="music-toggle" class="fixed bottom-8 left-8 z-40 w-14 h-14 rounded-full bg-white/80 dark:bg-slate-800/80 backdrop-blur shadow-lg flex items-center justify-center text-bloom-pink border border-bloom-pink/20 transition-all hover:scale-110">
-        <span class="material-symbols-outlined text-2xl" id="music-icon">music_off</span>
-    </button>
-    <audio id="bg-audio" loop src="audio.mp3"></audio>
+    <div class="fixed bottom-8 left-8 z-40 flex flex-col gap-2 items-start">
+        <div id="music-menu" class="hidden bg-white/90 dark:bg-slate-800/90 backdrop-blur-md border border-bloom-pink/20 rounded-2xl shadow-xl p-2 w-48 flex-col gap-1 transition-all origin-bottom-left">
+            <div class="text-xs text-bloom-pink/70 font-semibold px-2 pt-1 pb-2 uppercase tracking-wider">Select Track</div>
+            <button class="music-option flex items-center gap-3 p-2 rounded-xl hover:bg-bloom-pink/10 text-bloom-text transition-colors text-left" data-src="audio.mp3">
+                <span class="material-symbols-outlined text-bloom-pink text-lg">play_circle</span>
+                <span class="text-sm font-medium">Track 1</span>
+            </button>
+            <button class="music-option flex items-center gap-3 p-2 rounded-xl hover:bg-bloom-pink/10 text-bloom-text transition-colors text-left" data-src="audio2.mp3">
+                <span class="material-symbols-outlined text-bloom-pink text-lg">play_circle</span>
+                <span class="text-sm font-medium">Track 2</span>
+            </button>
+            <div class="h-[1px] bg-bloom-pink/10 my-1"></div>
+            <button id="music-stop" class="flex items-center gap-3 p-2 rounded-xl hover:bg-red-50 text-red-400 transition-colors text-left">
+                <span class="material-symbols-outlined text-lg">stop_circle</span>
+                <span class="text-sm font-medium">Stop Music</span>
+            </button>
+        </div>
+        <button id="music-toggle" class="w-14 h-14 rounded-full bg-white/80 dark:bg-slate-800/80 backdrop-blur shadow-lg flex items-center justify-center text-bloom-pink border border-bloom-pink/20 transition-all hover:scale-110">
+            <span class="material-symbols-outlined text-2xl" id="music-icon">library_music</span>
+        </button>
+    </div>
+    <audio id="bg-audio" loop></audio>
 
     <!-- Secret Letter Modal -->
     <div id="secret-modal" class="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-6 opacity-0 transition-opacity duration-500">
@@ -179,20 +197,48 @@
             // Background Music
             const musicBtn = document.getElementById('music-toggle');
             const musicIcon = document.getElementById('music-icon');
+            const musicMenu = document.getElementById('music-menu');
+            const musicOptions = document.querySelectorAll('.music-option');
+            const musicStop = document.getElementById('music-stop');
             const audio = document.getElementById('bg-audio');
-            let isPlaying = false;
             
-            musicBtn.addEventListener('click', () => {
-                if (isPlaying) {
-                    audio.pause();
-                    musicIcon.textContent = 'music_off';
-                    musicBtn.classList.remove('music-playing');
-                } else {
+            // Toggle menu
+            musicBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                musicMenu.classList.toggle('hidden');
+                musicMenu.classList.toggle('flex');
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', () => {
+                musicMenu.classList.add('hidden');
+                musicMenu.classList.remove('flex');
+            });
+            
+            // Handle track selection
+            musicOptions.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const src = btn.getAttribute('data-src');
+                    if (audio.src.indexOf(src) === -1) {
+                        audio.src = src;
+                    }
                     audio.play().catch(e => console.log('Audio play failed:', e));
                     musicIcon.textContent = 'music_note';
                     musicBtn.classList.add('music-playing');
-                }
-                isPlaying = !isPlaying;
+                    musicMenu.classList.add('hidden');
+                    musicMenu.classList.remove('flex');
+                });
+            });
+            
+            // Handle stop
+            musicStop.addEventListener('click', (e) => {
+                e.stopPropagation();
+                audio.pause();
+                musicIcon.textContent = 'library_music';
+                musicBtn.classList.remove('music-playing');
+                musicMenu.classList.add('hidden');
+                musicMenu.classList.remove('flex');
             });
 
             // Secret Letter Logic (3 clicks)
