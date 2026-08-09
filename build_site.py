@@ -307,7 +307,7 @@ pages['index.html'] = ("home", """
                 </div>
                 <div class="header-divider"><span class="material-symbols-outlined text-bloom-pink opacity-60 text-[20px]">local_florist</span></div>
                 <p class="text-bloom-text dark:text-slate-300 text-[15px] leading-relaxed max-w-sm mb-10 font-medium opacity-80">
-                    A wonderful friend with an endless love for Rasmalai. Some people don't need a reason to be appreciated. They simply are.
+                    A wonderful friend with an endless love for Rabdi. Some people don't need a reason to be appreciated. They simply are.
                 </p>
                 <a href="about.html?v=3" class="inline-flex bg-bloom-pink text-white px-8 py-3.5 rounded-full font-medium text-[15px] items-center gap-2 hover:bg-opacity-90 transition-colors shadow-lg">
                     Explore <span class="material-symbols-outlined text-lg">arrow_forward</span>
@@ -348,7 +348,7 @@ pages['index.html'] = ("home", """
             <button id="close-chat" class="hover:text-white/70"><span class="material-symbols-outlined">close</span></button>
         </div>
         <div id="chat-messages" class="flex-grow p-5 overflow-y-auto flex flex-col gap-4 text-sm">
-            <div class="flex flex-col gap-1 items-start"><div class="p-3.5 shadow-sm max-w-[85%] leading-relaxed bg-white dark:bg-slate-800 text-bloom-text dark:text-slate-200 border border-bloom-pink/20 dark:border-white/10 rounded-[18px_18px_18px_0px]">Namaste Janki ji! 🌸 I hope your day is as sweet as Rasmalai! How are you feeling today?</div></div>
+            <div class="flex flex-col gap-1 items-start"><div class="p-3.5 shadow-sm max-w-[85%] leading-relaxed bg-white dark:bg-slate-800 text-bloom-text dark:text-slate-200 border border-bloom-pink/20 dark:border-white/10 rounded-[18px_18px_18px_0px]">Namaste Janki ji! 🌸 I hope your day is as sweet as Rabdi! How are you feeling today?</div></div>
         </div>
         <div class="p-4 bg-white/50 dark:bg-slate-800/50 border-t border-bloom-pink/10 dark:border-white/10">
             <form id="chat-form" class="flex items-center gap-2">
@@ -393,7 +393,7 @@ pages['index.html'] = ("home", """
 
             try {
                 const API_KEY = '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';
-                const systemPrompt = "You are 'Lotus Bot', a magical digital garden assistant created by Amar for his dear friend Janki. Talk to Janki with extreme sweetness, warmth, and poetry. You know she loves Rasmalai, is from Jodhpur, and was born on March 7, 2002, but ONLY mention these facts if it perfectly fits the conversation naturally. Do NOT mention them in every reply. Always use cute emojis like 🌸✨🌷. Keep your replies very short (1-2 sentences max) and highly conversational. Janki says: " + text;
+                const systemPrompt = "You are 'Lotus Bot', a magical digital garden assistant created by Amar for his dear friend Janki. Talk to Janki with extreme sweetness, warmth, and poetry. You know she loves Rabdi, is from Jodhpur, and was born on March 7, 2002, but ONLY mention these facts if it perfectly fits the conversation naturally. Do NOT mention them in every reply. Always use cute emojis like 🌸✨🌷. Keep your replies very short (1-2 sentences max) and highly conversational. Janki says: " + text;
                 
                 const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
                     method: 'POST',
@@ -574,7 +574,7 @@ pages['littlethings.html'] = ("little", """
             <div class="reveal glass-card rounded-3xl p-8 flex flex-col items-center text-center gap-4 hover:border-bloom-pink/40">
                 <div class="w-16 h-16 rounded-full bg-bloom-pink text-white flex items-center justify-center shadow-lg transform transition-transform hover:-rotate-12"><span class="material-symbols-outlined text-2xl">thumb_up</span></div>
                 <h3 class="font-serif text-2xl text-bloom-pink font-semibold">Likes</h3>
-                <p class="text-bloom-text dark:text-slate-300 font-medium opacity-90">Can never say no to Rasmalai, loves beautiful places, and great company.</p>
+                <p class="text-bloom-text dark:text-slate-300 font-medium opacity-90">Can never say no to Rabdi, loves beautiful places, and great company.</p>
             </div>
             <div class="reveal glass-card rounded-3xl p-8 flex flex-col items-center text-center gap-4 hover:border-bloom-pink/40">
                 <div class="w-16 h-16 rounded-full bg-bloom-pink text-white flex items-center justify-center shadow-lg transform transition-transform hover:rotate-12"><span class="material-symbols-outlined text-2xl">location_city</span></div>
