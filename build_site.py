@@ -184,7 +184,7 @@ footer = """
                     headSize: 37, headSizeVar: 37.5, leafSize: 30, leafSizeVar: 10,
                     headColor: Flw.Color.createWithHex('#2f090d'), headColorTintVar: 28.3, headColorValueVar: 0.168, headColorSatVar: 0.11,
                     leafColor: Flw.Color.createWithHex('#246410'), leafColorTintVar: 24.2, leafColorValueVar: 0.2, leafColorSatVar: 0.2,
-                    radius: 55, radiusVar: 70, globalDirection: -Math.PI / 2, growVelocity: 0.195,
+                    radius: 55, radiusVar: 70, globalDirection: Math.PI / 2, growVelocity: 0.195,
                     strokeBranchWidth: 0, strokeBranchColor: '#5c5c5c', strokeLeafWidth: 0.1, strokeLeafColor: '#161616',
                     strokeHeadWidth: 0.2, strokeHeadColor: '#1b1b1b'
                 };
@@ -196,8 +196,8 @@ footer = """
                         if(e.isIntersecting && !e.target.drawn) {
                             e.target.drawn = true;
                             // Ensure inline styles are set in pixels as required by Flw library
-                            if (!e.target.style.width) e.target.style.width = '200px';
-                            if (!e.target.style.height) e.target.style.height = '500px';
+                            if (!e.target.style.width) e.target.style.width = '260px';
+                            if (!e.target.style.height) e.target.style.height = '550px';
                             
                             setTimeout(() => {
                                 try {
@@ -358,9 +358,9 @@ pages['index.html'] = ("home", """
             <div class="reveal flex justify-center lg:justify-end pr-0 lg:pr-16 relative z-10 mt-8 lg:mt-0">
                 <div class="relative inline-block w-full max-w-[360px] md:max-w-[460px]">
                     <!-- Left Flower -->
-                    <div id="flower-left" class="absolute top-[5%] -left-[40px] md:-left-[180px] pointer-events-none z-20" style="width: 200px; height: 500px;"></div>
+                    <div id="flower-left" class="absolute -bottom-10 -left-[100px] md:-left-[220px] pointer-events-none z-0" style="width: 260px; height: 550px;"></div>
                     <!-- Right Flower -->
-                    <div id="flower-right" class="absolute top-[5%] -right-[40px] md:-right-[180px] pointer-events-none z-20" style="width: 200px; height: 500px; transform: scaleX(-1);"></div>
+                    <div id="flower-right" class="absolute -bottom-10 -right-[100px] md:-right-[220px] pointer-events-none z-0" style="width: 260px; height: 550px; transform: scaleX(-1);"></div>
                     
                     <div class="w-full aspect-[4/5] image-container overflow-hidden shadow-xl relative ring-4 ring-white/30 dark:ring-white/10 z-10">
                         <img src="janki_photo.jpeg" alt="Janki" class="w-full h-full object-cover object-top" />
