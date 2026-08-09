@@ -177,16 +177,16 @@ footer = """
             // Procedural Flowers
             if (typeof Flw !== 'undefined') {
                 const flowerOptions = {
-                    widthStart: 5.5, widthEnd: 1.2,
-                    colorStart: Flw.Color.createWithHex('#1b4609'), colorEnd: Flw.Color.createWithHex('#5ea612'),
-                    maxDeepness: 3, maxDeepnessVar: 1, maxDeepnessTwisted: 4, maxDeepnessTwistedVar: 0,
-                    maxDeepnessMajor: 2, maxDeepnessMajorVar: 1, maxDeepnessMaster: 5, maxDeepnessMasterVar: 2,
-                    headSize: 55, headSizeVar: 15, leafSize: 36, leafSizeVar: 10,
-                    headColor: Flw.Color.createWithHex('#d7385e'), headColorTintVar: 25, headColorValueVar: 0.2, headColorSatVar: 0.2,
-                    leafColor: Flw.Color.createWithHex('#2c7a14'), leafColorTintVar: 24.2, leafColorValueVar: 0.2, leafColorSatVar: 0.2,
-                    radius: 45, radiusVar: 35, globalDirection: Math.PI / 2, growVelocity: 0.195,
+                    widthStart: 3.2, widthEnd: 0.6,
+                    colorStart: Flw.Color.createWithHex('#2b5314'), colorEnd: Flw.Color.createWithHex('#68b030'),
+                    maxDeepness: 2, maxDeepnessVar: 1, maxDeepnessTwisted: 2, maxDeepnessTwistedVar: 0,
+                    maxDeepnessMajor: 2, maxDeepnessMajorVar: 1, maxDeepnessMaster: 4, maxDeepnessMasterVar: 1,
+                    headSize: 32, headSizeVar: 8, leafSize: 22, leafSizeVar: 6,
+                    headColor: Flw.Color.createWithHex('#e84a5f'), headColorTintVar: 20, headColorValueVar: 0.2, headColorSatVar: 0.2,
+                    leafColor: Flw.Color.createWithHex('#3a861d'), leafColorTintVar: 24.2, leafColorValueVar: 0.2, leafColorSatVar: 0.2,
+                    radius: 30, radiusVar: 20, globalDirection: Math.PI / 2, growVelocity: 0.195,
                     strokeBranchWidth: 0, strokeBranchColor: '#5c5c5c', strokeLeafWidth: 0.1, strokeLeafColor: '#161616',
-                    strokeHeadWidth: 0.2, strokeHeadColor: '#1b1b1b'
+                    strokeHeadWidth: 0.1, strokeHeadColor: '#1b1b1b'
                 };
                 const fLeft = document.getElementById('flower-left');
                 const fRight = document.getElementById('flower-right');
@@ -196,8 +196,8 @@ footer = """
                         if(e.isIntersecting && !e.target.drawn) {
                             e.target.drawn = true;
                             // Ensure inline styles are set in pixels as required by Flw library
-                            if (!e.target.style.width) e.target.style.width = '280px';
-                            if (!e.target.style.height) e.target.style.height = '600px';
+                            if (!e.target.style.width) e.target.style.width = '220px';
+                            if (!e.target.style.height) e.target.style.height = '500px';
                             
                             setTimeout(() => {
                                 try {
@@ -358,9 +358,9 @@ pages['index.html'] = ("home", """
             <div class="reveal flex justify-center lg:justify-end pr-0 lg:pr-12 relative z-10 mt-8 lg:mt-0">
                 <div class="relative inline-block w-full max-w-[360px] md:max-w-[460px]">
                     <!-- Left Flower -->
-                    <div id="flower-left" class="absolute -top-[60px] -left-[100px] md:-left-[200px] pointer-events-none z-20" style="width: 280px; height: 600px;"></div>
+                    <div id="flower-left" class="absolute -bottom-4 -left-[60px] md:-left-[100px] pointer-events-none z-0" style="width: 220px; height: 500px;"></div>
                     <!-- Right Flower -->
-                    <div id="flower-right" class="absolute -top-[60px] -right-[80px] md:-right-[180px] pointer-events-none z-20" style="width: 280px; height: 600px; transform: scaleX(-1);"></div>
+                    <div id="flower-right" class="absolute -bottom-4 -right-[60px] md:-right-[100px] pointer-events-none z-0" style="width: 220px; height: 500px; transform: scaleX(-1);"></div>
                     
                     <div class="w-full aspect-[4/5] image-container overflow-hidden shadow-xl relative ring-4 ring-white/30 dark:ring-white/10 z-10">
                         <img src="janki_photo.jpeg" alt="Janki" class="w-full h-full object-cover object-top" />
