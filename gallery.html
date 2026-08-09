@@ -218,7 +218,7 @@
                     widthStart: 4.4, widthEnd: 0.8,
                     colorStart: Flw.Color.createWithHex('#153906'), colorEnd: Flw.Color.createWithHex('#52910b'),
                     maxDeepness: 3, maxDeepnessVar: 2, maxDeepnessTwisted: 5, maxDeepnessTwistedVar: 0,
-                    maxDeepnessMajor: 2, maxDeepnessMajorVar: 2, maxDeepnessMaster: 5, maxDeepnessMasterVar: 4,
+                    maxDeepnessMajor: 2, maxDeepnessMajorVar: 2, maxDeepnessMaster: 6, maxDeepnessMasterVar: 4,
                     headSize: 37, headSizeVar: 37.5, leafSize: 30, leafSizeVar: 10,
                     headColor: Flw.Color.createWithHex('#2f090d'), headColorTintVar: 28.3, headColorValueVar: 0.168, headColorSatVar: 0.11,
                     leafColor: Flw.Color.createWithHex('#246410'), leafColorTintVar: 24.2, leafColorValueVar: 0.2, leafColorSatVar: 0.2,
@@ -234,8 +234,8 @@
                         if(e.isIntersecting && !e.target.drawn) {
                             e.target.drawn = true;
                             // Ensure inline styles are set in pixels as required by Flw library
-                            if (!e.target.style.width) e.target.style.width = '260px';
-                            if (!e.target.style.height) e.target.style.height = '550px';
+                            if (!e.target.style.width) e.target.style.width = '280px';
+                            if (!e.target.style.height) e.target.style.height = '650px';
                             
                             setTimeout(() => {
                                 try {
