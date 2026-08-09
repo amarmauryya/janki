@@ -91,7 +91,7 @@
         <a href="fanwall.html" class="mobile-link text-2xl font-serif text-bloom-text dark:text-slate-200 hover:text-bloom-pink transition-colors">Fan Wall</a>
         <a href="littlethings.html" class="mobile-link text-2xl font-serif text-bloom-text dark:text-slate-200 hover:text-bloom-pink transition-colors">Little Things</a>
     </div>
-<main id="main-content" class="transition-opacity duration-300">
+
     <section class="relative min-h-[80dvh] flex items-center pb-24">
         <div class="max-w-[1400px] mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 px-6 lg:px-10 items-center relative z-10">
             <div class="reveal relative z-30 pt-4 lg:pt-0 pl-2 lg:pl-16">
@@ -225,7 +225,7 @@
             }
         });
     </script>
-</main>
+
     <!-- Background Music -->
     <div class="fixed bottom-8 left-8 z-40 flex flex-col gap-2 items-start">
         <div id="music-menu" class="hidden bg-white/90 dark:bg-slate-800/90 backdrop-blur-md border border-bloom-pink/20 rounded-2xl shadow-xl p-2 w-48 flex-col gap-1 transition-all origin-bottom-left">
@@ -409,80 +409,6 @@
                 
                 petalContainer.appendChild(petal);
             }
-            
-            // --- SPA / PJAX Routing Script ---
-            document.addEventListener('click', async (e) => {
-                const link = e.target.closest('a');
-                if (!link) return;
-                
-                const href = link.getAttribute('href');
-                // Only intercept internal links ending in .html
-                if (href && href.endsWith('.html') && !href.startsWith('http')) {
-                    e.preventDefault();
-                    await loadPage(href);
-                    window.history.pushState(null, '', href);
-                    updateActiveNav(href);
-                }
-            });
-
-            window.addEventListener('popstate', async () => {
-                const href = location.pathname.split('/').pop() || 'index.html';
-                await loadPage(href);
-                updateActiveNav(href);
-            });
-
-            async function loadPage(href) {
-                try {
-                    const res = await fetch(href);
-                    const html = await res.text();
-                    
-                    // Extract main content
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(html, 'text/html');
-                    const newMain = doc.getElementById('main-content');
-                    
-                    if (newMain) {
-                        const currentMain = document.getElementById('main-content');
-                        // Fade out
-                        currentMain.style.opacity = 0;
-                        currentMain.style.transition = 'opacity 0.3s ease';
-                        
-                        setTimeout(() => {
-                            currentMain.innerHTML = newMain.innerHTML;
-                            document.title = doc.title;
-                            window.scrollTo(0, 0);
-                            
-                            // Re-initialize reveals
-                            const reveals = document.querySelectorAll('.reveal');
-                            reveals.forEach(r => observer.observe(r));
-                            setTimeout(() => reveals.forEach(r => { if(r.getBoundingClientRect().top < window.innerHeight) r.classList.add('active'); }), 100);
-                            
-                            // Fade in
-                            currentMain.style.opacity = 1;
-                        }, 300);
-                    }
-                } catch (error) {
-                    console.error('Page load failed:', error);
-                    window.location.href = href; // Fallback
-                }
-            }
-
-            function updateActiveNav(href) {
-                const links = document.querySelectorAll('nav a');
-                links.forEach(link => {
-                    if (link.getAttribute('href') === href) {
-                        link.className = 'text-sm font-medium transition-colors text-bloom-pink border-b border-bloom-pink pb-1';
-                    } else {
-                        link.className = 'text-sm font-medium transition-colors text-bloom-text dark:text-slate-300 hover:text-bloom-pink dark:hover:text-bloom-pink';
-                    }
-                });
-                // Close mobile menu if open
-                const mobileMenu = document.getElementById('mobile-menu');
-                if (mobileMenu && !mobileMenu.classList.contains('hidden-menu')) {
-                    document.getElementById('menu-btn').click();
-                }
-            }
-            // --- End SPA Routing Script ---
         });
     </script>
 </body>
