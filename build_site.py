@@ -80,24 +80,24 @@ def get_navbar(active_page):
             <span class="material-symbols-outlined text-bloom-pink group-hover:rotate-12 transition-transform" style="font-size: 26px;">spa</span>
         </a>
         <div class="hidden md:flex items-center gap-10">
-            <a href="index.html" class="text-sm font-medium transition-colors {a('home')}">Home</a>
-            <a href="about.html" class="text-sm font-medium transition-colors {a('about')}">About</a>
-            <a href="gallery.html" class="text-sm font-medium transition-colors {a('gallery')}">Gallery</a>
-            <a href="memories.html" class="text-sm font-medium transition-colors {a('memories')}">Memories</a>
-            <a href="fanwall.html" class="text-sm font-medium transition-colors {a('fanwall')}">Fan Wall</a>
-            <a href="littlethings.html" class="text-sm font-medium transition-colors {a('little')}">Little Things</a>
+            <a href="index.html?v=3" class="text-sm font-medium transition-colors {a('home')}">Home</a>
+            <a href="about.html?v=3" class="text-sm font-medium transition-colors {a('about')}">About</a>
+            <a href="gallery.html?v=3" class="text-sm font-medium transition-colors {a('gallery')}">Gallery</a>
+            <a href="memories.html?v=3" class="text-sm font-medium transition-colors {a('memories')}">Memories</a>
+            <a href="fanwall.html?v=3" class="text-sm font-medium transition-colors {a('fanwall')}">Fan Wall</a>
+            <a href="littlethings.html?v=3" class="text-sm font-medium transition-colors {a('little')}">Little Things</a>
         </div>
         <div class="flex items-center gap-4">
             <button id="menu-btn" class="md:hidden text-bloom-pink p-2"><span class="material-symbols-outlined text-[28px]">menu</span></button>
         </div>
     </nav>
     <div id="mobile-menu" class="hidden-menu fixed inset-0 bg-[#F8F3EC]/95 dark:bg-slate-900/95 backdrop-blur-xl z-[45] flex flex-col items-center justify-center gap-8 md:hidden transition-colors duration-700">
-        <a href="index.html" class="mobile-link text-2xl font-serif text-bloom-text dark:text-slate-200 hover:text-bloom-pink transition-colors">Home</a>
-        <a href="about.html" class="mobile-link text-2xl font-serif text-bloom-text dark:text-slate-200 hover:text-bloom-pink transition-colors">About</a>
-        <a href="gallery.html" class="mobile-link text-2xl font-serif text-bloom-text dark:text-slate-200 hover:text-bloom-pink transition-colors">Gallery</a>
-        <a href="memories.html" class="mobile-link text-2xl font-serif text-bloom-text dark:text-slate-200 hover:text-bloom-pink transition-colors">Memories</a>
-        <a href="fanwall.html" class="mobile-link text-2xl font-serif text-bloom-text dark:text-slate-200 hover:text-bloom-pink transition-colors">Fan Wall</a>
-        <a href="littlethings.html" class="mobile-link text-2xl font-serif text-bloom-text dark:text-slate-200 hover:text-bloom-pink transition-colors">Little Things</a>
+        <a href="index.html?v=3" class="mobile-link text-2xl font-serif text-bloom-text dark:text-slate-200 hover:text-bloom-pink transition-colors">Home</a>
+        <a href="about.html?v=3" class="mobile-link text-2xl font-serif text-bloom-text dark:text-slate-200 hover:text-bloom-pink transition-colors">About</a>
+        <a href="gallery.html?v=3" class="mobile-link text-2xl font-serif text-bloom-text dark:text-slate-200 hover:text-bloom-pink transition-colors">Gallery</a>
+        <a href="memories.html?v=3" class="mobile-link text-2xl font-serif text-bloom-text dark:text-slate-200 hover:text-bloom-pink transition-colors">Memories</a>
+        <a href="fanwall.html?v=3" class="mobile-link text-2xl font-serif text-bloom-text dark:text-slate-200 hover:text-bloom-pink transition-colors">Fan Wall</a>
+        <a href="littlethings.html?v=3" class="mobile-link text-2xl font-serif text-bloom-text dark:text-slate-200 hover:text-bloom-pink transition-colors">Little Things</a>
     </div>
 """
 
@@ -245,7 +245,7 @@ footer = """
                 } else {
                     // If not 3 clicks, just act as a normal link after a short delay
                     clickTimer = setTimeout(() => {
-                        if (clickCount === 1) window.location.href = 'index.html';
+                        if (clickCount === 1) window.location.href = 'index.html?v=3';
                         clickCount = 0;
                     }, 400);
                 }
@@ -309,7 +309,7 @@ pages['index.html'] = ("home", """
                 <p class="text-bloom-text dark:text-slate-300 text-[15px] leading-relaxed max-w-sm mb-10 font-medium opacity-80">
                     A wonderful friend with an endless love for Rasmalai. Some people don't need a reason to be appreciated. They simply are.
                 </p>
-                <a href="about.html" class="inline-flex bg-bloom-pink text-white px-8 py-3.5 rounded-full font-medium text-[15px] items-center gap-2 hover:bg-opacity-90 transition-colors shadow-lg">
+                <a href="about.html?v=3" class="inline-flex bg-bloom-pink text-white px-8 py-3.5 rounded-full font-medium text-[15px] items-center gap-2 hover:bg-opacity-90 transition-colors shadow-lg">
                     Explore <span class="material-symbols-outlined text-lg">arrow_forward</span>
                 </a>
             </div>
