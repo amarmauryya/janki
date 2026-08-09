@@ -184,44 +184,38 @@
             reveals.forEach(r => observer.observe(r));
             setTimeout(() => reveals.forEach(r => { if(r.getBoundingClientRect().top < window.innerHeight) r.classList.add('active'); }), 100);
 
-            // Procedural Flowers
+            // Procedural Flowers Full Screen Garden
             if (typeof Flw !== 'undefined') {
-                const flowerOptions = {
-                    widthStart: 3.2, widthEnd: 0.6,
+                const flowerOptionsBase = {
+                    widthStart: 4.0, widthEnd: 0.8,
                     colorStart: Flw.Color.createWithHex('#2b5314'), colorEnd: Flw.Color.createWithHex('#68b030'),
-                    maxDeepness: 2, maxDeepnessVar: 1, maxDeepnessTwisted: 2, maxDeepnessTwistedVar: 0,
-                    maxDeepnessMajor: 2, maxDeepnessMajorVar: 1, maxDeepnessMaster: 4, maxDeepnessMasterVar: 1,
-                    headSize: 32, headSizeVar: 8, leafSize: 22, leafSizeVar: 6,
-                    headColor: Flw.Color.createWithHex('#e84a5f'), headColorTintVar: 20, headColorValueVar: 0.2, headColorSatVar: 0.2,
+                    maxDeepness: 3, maxDeepnessVar: 1, maxDeepnessTwisted: 3, maxDeepnessTwistedVar: 0,
+                    maxDeepnessMajor: 2, maxDeepnessMajorVar: 1, maxDeepnessMaster: 5, maxDeepnessMasterVar: 2,
+                    headSize: 42, headSizeVar: 12, leafSize: 28, leafSizeVar: 8,
+                    headColor: Flw.Color.createWithHex('#d7385e'), headColorTintVar: 25, headColorValueVar: 0.2, headColorSatVar: 0.2,
                     leafColor: Flw.Color.createWithHex('#3a861d'), leafColorTintVar: 24.2, leafColorValueVar: 0.2, leafColorSatVar: 0.2,
-                    radius: 30, radiusVar: 20, globalDirection: Math.PI / 2, growVelocity: 0.195,
+                    radius: 40, radiusVar: 30, globalDirection: Math.PI / 2, growVelocity: 0.195,
                     strokeBranchWidth: 0, strokeBranchColor: '#5c5c5c', strokeLeafWidth: 0.1, strokeLeafColor: '#161616',
-                    strokeHeadWidth: 0.1, strokeHeadColor: '#1b1b1b'
+                    strokeHeadWidth: 0.15, strokeHeadColor: '#1b1b1b'
                 };
-                const fLeft = document.getElementById('flower-left');
-                const fRight = document.getElementById('flower-right');
                 
-                const flowerObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(e => {
-                        if(e.isIntersecting && !e.target.drawn) {
-                            e.target.drawn = true;
-                            // Ensure inline styles are set in pixels as required by Flw library
-                            if (!e.target.style.width) e.target.style.width = '220px';
-                            if (!e.target.style.height) e.target.style.height = '500px';
-                            
-                            setTimeout(() => {
-                                try {
-                                    Flw.LimitedFlower.create(e.target, flowerOptions, true);
-                                } catch (err) {
-                                    console.error('Flower creation failed:', err);
-                                }
-                            }, 300);
-                        }
-                    });
-                }, { threshold: 0.1 });
-                
-                if (fLeft) flowerObserver.observe(fLeft);
-                if (fRight) flowerObserver.observe(fRight);
+                ['flower-1', 'flower-2', 'flower-3'].forEach((id, idx) => {
+                    const el = document.getElementById(id);
+                    if (el) {
+                        const defaultW = id === 'flower-2' ? '340px' : '300px';
+                        const defaultH = id === 'flower-2' ? '850px' : '750px';
+                        if (!el.style.width) el.style.width = defaultW;
+                        if (!el.style.height) el.style.height = defaultH;
+                        
+                        setTimeout(() => {
+                            try {
+                                Flw.LimitedFlower.create(el, flowerOptionsBase, true);
+                            } catch (err) {
+                                console.error('Garden flower error:', err);
+                            }
+                        }, idx * 400 + 200);
+                    }
+                });
             }
 
 
