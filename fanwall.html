@@ -188,14 +188,14 @@
             // Procedural Flowers
             if (typeof Flw !== 'undefined') {
                 const flowerOptions = {
-                    widthStart: 4.4, widthEnd: 0.8,
-                    colorStart: Flw.Color.createWithHex('#153906'), colorEnd: Flw.Color.createWithHex('#52910b'),
-                    maxDeepness: 2, maxDeepnessVar: 1, maxDeepnessTwisted: 2, maxDeepnessTwistedVar: 0,
-                    maxDeepnessMajor: 2, maxDeepnessMajorVar: 1, maxDeepnessMaster: 4, maxDeepnessMasterVar: 2,
-                    headSize: 37, headSizeVar: 20, leafSize: 26, leafSizeVar: 8,
-                    headColor: Flw.Color.createWithHex('#2f090d'), headColorTintVar: 28.3, headColorValueVar: 0.168, headColorSatVar: 0.11,
-                    leafColor: Flw.Color.createWithHex('#246410'), leafColorTintVar: 24.2, leafColorValueVar: 0.2, leafColorSatVar: 0.2,
-                    radius: 35, radiusVar: 35, globalDirection: Math.PI / 2, growVelocity: 0.195,
+                    widthStart: 5.5, widthEnd: 1.2,
+                    colorStart: Flw.Color.createWithHex('#1b4609'), colorEnd: Flw.Color.createWithHex('#5ea612'),
+                    maxDeepness: 3, maxDeepnessVar: 1, maxDeepnessTwisted: 4, maxDeepnessTwistedVar: 0,
+                    maxDeepnessMajor: 2, maxDeepnessMajorVar: 1, maxDeepnessMaster: 5, maxDeepnessMasterVar: 2,
+                    headSize: 55, headSizeVar: 15, leafSize: 36, leafSizeVar: 10,
+                    headColor: Flw.Color.createWithHex('#d7385e'), headColorTintVar: 25, headColorValueVar: 0.2, headColorSatVar: 0.2,
+                    leafColor: Flw.Color.createWithHex('#2c7a14'), leafColorTintVar: 24.2, leafColorValueVar: 0.2, leafColorSatVar: 0.2,
+                    radius: 45, radiusVar: 35, globalDirection: Math.PI / 2, growVelocity: 0.195,
                     strokeBranchWidth: 0, strokeBranchColor: '#5c5c5c', strokeLeafWidth: 0.1, strokeLeafColor: '#161616',
                     strokeHeadWidth: 0.2, strokeHeadColor: '#1b1b1b'
                 };
@@ -207,8 +207,8 @@
                         if(e.isIntersecting && !e.target.drawn) {
                             e.target.drawn = true;
                             // Ensure inline styles are set in pixels as required by Flw library
-                            if (!e.target.style.width) e.target.style.width = '240px';
-                            if (!e.target.style.height) e.target.style.height = '580px';
+                            if (!e.target.style.width) e.target.style.width = '280px';
+                            if (!e.target.style.height) e.target.style.height = '600px';
                             
                             setTimeout(() => {
                                 try {
