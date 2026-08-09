@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Janki's Garden - A Fanpage</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        bloom: { bg: '#F8F3EC', pink: '#D78492', green: '#748A7A', text: '#6A615D', btnBg: '#FCEBEA', btnText: '#CD6F80' }
+                    }
+                }
+            }
+        }
+        
+        // Initial Theme Check
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            body { @apply bg-bloom-bg text-bloom-text dark:bg-slate-900 dark:text-slate-200 transition-colors duration-700; font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
+            h1, h2, h3, h4, .font-serif { font-family: 'Playfair Display', serif; }
+            .header-divider { display: flex; align-items: center; gap: 12px; margin-top: 1.5rem; margin-bottom: 2rem; }
+            .header-divider::before, .header-divider::after { content: ''; height: 1px; width: 40px; @apply bg-bloom-pink/40 dark:bg-bloom-pink/30; }
+            .image-container { border-radius: 2rem; }
+            .glass-card { @apply bg-white/40 dark:bg-slate-800/40 backdrop-blur-md border border-bloom-pink/20 dark:border-white/10 shadow-sm transition-all duration-300; }
+            .glass-card:hover { transform: translateY(-5px); @apply shadow-[0_10px_25px_-5px_rgba(215,132,146,0.3)] dark:shadow-[0_10px_25px_-5px_rgba(215,132,146,0.1)]; }
+            .reveal { opacity: 0; transform: translateY(40px); transition: opacity 1.2s ease, transform 1.2s ease; }
+            .reveal.active { opacity: 1; transform: translateY(0); }
+            #mobile-menu.hidden-menu { opacity: 0; visibility: hidden; pointer-events: none; }
+            #mobile-menu { transition: opacity 0.3s ease, visibility 0.3s ease; }
+            
+            /* Chat Widget Styles */
+            #chat-widget { transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1); transform-origin: bottom right; }
+            #chat-widget.hidden-chat { opacity: 0; transform: scale(0.8) translateY(20px); pointer-events: none; }
+            .envelope-btn { animation: float 3s ease-in-out infinite; }
+            
+            /* Falling Petals */
+            .petal { position: fixed; top: -10%; z-index: 10; pointer-events: none; user-select: none; animation: fall linear infinite; opacity: 0.7; }
+            .dark .petal { opacity: 0.4; filter: brightness(1.2); }
+            
+            /* Animations */
+            @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0px); } }
+            @keyframes fall {
+                0% { transform: translate(0, 0) rotate(0deg); }
+                100% { transform: translate(100px, 120vh) rotate(360deg); }
+            }
+            @keyframes spin-slow { 100% { transform: rotate(360deg); } }
+            .music-playing #music-icon { animation: spin-slow 4s linear infinite; }
+        }
+    </style>
+</head>
+<body class="min-h-screen relative flex flex-col pt-24">
+
+    <!-- Decorative Watermark Flowers -->
+    <div class="fixed top-20 -left-20 text-bloom-pink opacity-[0.03] dark:opacity-5 transform -rotate-12 pointer-events-none z-0">
+        <span class="material-symbols-outlined" style="font-size: 45vh;">local_florist</span>
+    </div>
+    <div class="fixed -bottom-10 -right-10 text-bloom-pink opacity-[0.03] dark:opacity-5 transform rotate-12 pointer-events-none z-0">
+        <span class="material-symbols-outlined" style="font-size: 55vh;">spa</span>
+    </div>
+
+    <!-- Falling Petals Container -->
+    <div id="petal-container" class="fixed inset-0 overflow-hidden pointer-events-none z-0"></div>
+
+    <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 lg:px-10 py-4 lg:py-5 max-w-[1600px] mx-auto w-full bg-[#F8F3EC]/90 dark:bg-slate-900/90 backdrop-blur-md shadow-sm transition-colors duration-700">
+        <a href="index.html" class="flex items-center gap-2 group cursor-pointer" id="secret-trigger">
+            <h1 class="font-serif text-2xl lg:text-3xl font-medium text-bloom-pink">Janki's Garden</h1>
+            <span class="material-symbols-outlined text-bloom-pink group-hover:rotate-12 transition-transform" style="font-size: 26px;">spa</span>
+        </a>
+        <div class="hidden md:flex items-center gap-10">
+            <a href="index.html" class="text-sm font-medium transition-colors text-bloom-text dark:text-slate-300 hover:text-bloom-pink dark:hover:text-bloom-pink">Home</a>
+            <a href="about.html" class="text-sm font-medium transition-colors text-bloom-text dark:text-slate-300 hover:text-bloom-pink dark:hover:text-bloom-pink">About</a>
+            <a href="gallery.html" class="text-sm font-medium transition-colors text-bloom-text dark:text-slate-300 hover:text-bloom-pink dark:hover:text-bloom-pink">Gallery</a>
+            <a href="memories.html" class="text-sm font-medium transition-colors text-bloom-text dark:text-slate-300 hover:text-bloom-pink dark:hover:text-bloom-pink">Memories</a>
+            <a href="fanwall.html" class="text-sm font-medium transition-colors text-bloom-pink border-b border-bloom-pink pb-1">Fan Wall</a>
+            <a href="littlethings.html" class="text-sm font-medium transition-colors text-bloom-text dark:text-slate-300 hover:text-bloom-pink dark:hover:text-bloom-pink">Little Things</a>
+        </div>
+        <div class="flex items-center gap-4">
+            <!-- Theme Toggle -->
+            <button id="theme-toggle" class="w-10 h-10 rounded-full bg-white/50 dark:bg-slate-800 flex items-center justify-center text-bloom-pink shadow-sm hover:shadow-md transition-all">
+                <span class="material-symbols-outlined text-xl dark:hidden">dark_mode</span>
+                <span class="material-symbols-outlined text-xl hidden dark:block">light_mode</span>
+            </button>
+            <button id="menu-btn" class="md:hidden text-bloom-pink p-2"><span class="material-symbols-outlined text-[28px]">menu</span></button>
+        </div>
+    </nav>
+    <div id="mobile-menu" class="hidden-menu fixed inset-0 bg-[#F8F3EC]/95 dark:bg-slate-900/95 backdrop-blur-xl z-[45] flex flex-col items-center justify-center gap-8 md:hidden transition-colors duration-700">
+        <a href="index.html" class="mobile-link text-2xl font-serif text-bloom-text dark:text-slate-200 hover:text-bloom-pink transition-colors">Home</a>
+        <a href="about.html" class="mobile-link text-2xl font-serif text-bloom-text dark:text-slate-200 hover:text-bloom-pink transition-colors">About</a>
+        <a href="gallery.html" class="mobile-link text-2xl font-serif text-bloom-text dark:text-slate-200 hover:text-bloom-pink transition-colors">Gallery</a>
+        <a href="memories.html" class="mobile-link text-2xl font-serif text-bloom-text dark:text-slate-200 hover:text-bloom-pink transition-colors">Memories</a>
+        <a href="fanwall.html" class="mobile-link text-2xl font-serif text-bloom-text dark:text-slate-200 hover:text-bloom-pink transition-colors">Fan Wall</a>
+        <a href="littlethings.html" class="mobile-link text-2xl font-serif text-bloom-text dark:text-slate-200 hover:text-bloom-pink transition-colors">Little Things</a>
+    </div>
+
+    <section class="py-20 px-6 lg:px-24 max-w-6xl mx-auto min-h-screen">
+        <div class="reveal text-center mb-16">
+            <h2 class="font-serif text-4xl md:text-5xl text-bloom-pink font-semibold mb-4">The Fan Wall</h2>
+            <p class="text-bloom-text dark:text-slate-400 font-medium opacity-80">Sweet messages dedicated to you.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="reveal glass-card p-8 rounded-3xl relative overflow-hidden group">
+                <div class="absolute -right-4 -top-4 w-24 h-24 bg-bloom-pink/10 rounded-full blur-2xl group-hover:bg-bloom-pink/20 transition-all duration-500"></div>
+                <span class="material-symbols-outlined absolute top-6 right-6 text-bloom-pink/30 text-4xl">format_quote</span>
+                <p class="text-bloom-text dark:text-slate-300 font-medium italic mb-6 leading-relaxed relative z-10">"Janki, you light up every room you walk into! Never stop being your amazing self. The world needs your Jodhpur charm!"</p>
+                <div class="font-serif text-bloom-pink font-semibold">- Your Friend</div>
+            </div>
+            <div class="reveal glass-card p-8 rounded-3xl relative overflow-hidden group">
+                <div class="absolute -right-4 -top-4 w-24 h-24 bg-bloom-pink/10 rounded-full blur-2xl group-hover:bg-bloom-pink/20 transition-all duration-500"></div>
+                <span class="material-symbols-outlined absolute top-6 right-6 text-bloom-pink/30 text-4xl">format_quote</span>
+                <p class="text-bloom-text dark:text-slate-300 font-medium italic mb-6 leading-relaxed relative z-10">"To the most wonderful person. Keep smiling always, it suits you best!"</p>
+                <div class="font-serif text-bloom-pink font-semibold">- Well Wisher</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Background Music -->
+    <button id="music-toggle" class="fixed bottom-8 left-8 z-40 w-14 h-14 rounded-full bg-white/80 dark:bg-slate-800/80 backdrop-blur shadow-lg flex items-center justify-center text-bloom-pink border border-bloom-pink/20 transition-all hover:scale-110">
+        <span class="material-symbols-outlined text-2xl" id="music-icon">music_off</span>
+    </button>
+    <audio id="bg-audio" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+
+    <!-- Secret Letter Modal -->
+    <div id="secret-modal" class="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-6 opacity-0 transition-opacity duration-500">
+        <div class="bg-[#F8F3EC] dark:bg-slate-800 w-full max-w-lg rounded-[2rem] p-10 relative shadow-2xl transform scale-95 transition-transform duration-500" id="secret-content">
+            <button id="close-secret" class="absolute top-6 right-6 text-bloom-text/50 dark:text-slate-400 hover:text-bloom-pink transition-colors">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+            <span class="material-symbols-outlined text-bloom-pink text-5xl mb-6 block text-center opacity-80">favorite</span>
+            <h2 class="font-serif text-3xl text-bloom-pink mb-6 text-center">A Secret Note Just For You</h2>
+            <p class="text-bloom-text dark:text-slate-300 leading-relaxed text-center font-medium opacity-90 mb-6 italic">
+                "Some people make the world a little brighter just by being in it. <br><br>
+                Thank you for being such an amazing friend, for your radiant smile, and for the joy you bring everywhere you go. Keep shining, Janki!"
+            </p>
+            <div class="text-center text-sm font-semibold text-bloom-pink">With love, forever. ✨</div>
+        </div>
+    </div>
+
+    <footer class="w-full py-12 lg:py-16 px-6 lg:px-24 flex flex-col items-center gap-6 bg-[#F8F3EC] dark:bg-slate-900/50 relative z-10 border-t border-bloom-pink/10 mt-auto transition-colors duration-700">
+        <div class="font-serif text-2xl text-bloom-pink">Janki's Garden</div>
+        <p class="text-sm text-bloom-text dark:text-slate-400 opacity-60 text-center">© 2024 Botanical Bloom. Created with love for my favorite person.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            let menuOpen = false;
+            menuBtn.addEventListener('click', () => {
+                menuOpen = !menuOpen;
+                if(menuOpen) {
+                    mobileMenu.classList.remove('hidden-menu');
+                    menuBtn.innerHTML = '<span class="material-symbols-outlined text-[28px]">close</span>';
+                } else {
+                    mobileMenu.classList.add('hidden-menu');
+                    menuBtn.innerHTML = '<span class="material-symbols-outlined text-[28px]">menu</span>';
+                }
+            });
+
+            // Scroll Reveal
+            const reveals = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
+            }, { threshold: 0.1 });
+            reveals.forEach(r => observer.observe(r));
+            setTimeout(() => reveals.forEach(r => { if(r.getBoundingClientRect().top < window.innerHeight) r.classList.add('active'); }), 100);
+
+            // Dark Mode Toggle
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            themeToggleBtn.addEventListener('click', function() {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                }
+            });
+
+            // Background Music
+            const musicBtn = document.getElementById('music-toggle');
+            const musicIcon = document.getElementById('music-icon');
+            const audio = document.getElementById('bg-audio');
+            let isPlaying = false;
+            
+            musicBtn.addEventListener('click', () => {
+                if (isPlaying) {
+                    audio.pause();
+                    musicIcon.textContent = 'music_off';
+                    musicBtn.classList.remove('music-playing');
+                } else {
+                    audio.play().catch(e => console.log('Audio play failed:', e));
+                    musicIcon.textContent = 'music_note';
+                    musicBtn.classList.add('music-playing');
+                }
+                isPlaying = !isPlaying;
+            });
+
+            // Secret Letter Logic (3 clicks)
+            const secretTrigger = document.getElementById('secret-trigger');
+            const secretModal = document.getElementById('secret-modal');
+            const secretContent = document.getElementById('secret-content');
+            const closeSecret = document.getElementById('close-secret');
+            let clickCount = 0;
+            let clickTimer;
+
+            secretTrigger.addEventListener('click', (e) => {
+                e.preventDefault(); // Prevent navigating home immediately if they are clicking fast
+                clickCount++;
+                clearTimeout(clickTimer);
+                
+                if (clickCount >= 3) {
+                    // Open Secret Letter
+                    secretModal.classList.remove('hidden');
+                    // small delay for transition
+                    setTimeout(() => {
+                        secretModal.classList.remove('opacity-0');
+                        secretContent.classList.remove('scale-95');
+                    }, 50);
+                    clickCount = 0;
+                } else {
+                    // If not 3 clicks, just act as a normal link after a short delay
+                    clickTimer = setTimeout(() => {
+                        if (clickCount === 1) window.location.href = 'index.html';
+                        clickCount = 0;
+                    }, 400);
+                }
+            });
+
+            closeSecret.addEventListener('click', () => {
+                secretModal.classList.add('opacity-0');
+                secretContent.classList.add('scale-95');
+                setTimeout(() => secretModal.classList.add('hidden'), 500);
+            });
+
+            // Falling Petals Logic
+            const petalContainer = document.getElementById('petal-container');
+            const petalsCount = 15;
+            const colors = ['#D78492', '#FCEBEA', '#FFB7B2'];
+            
+            for (let i = 0; i < petalsCount; i++) {
+                createPetal();
+            }
+
+            function createPetal() {
+                const petal = document.createElement('div');
+                petal.classList.add('petal');
+                
+                // Random properties
+                const size = Math.random() * 15 + 10; // 10px to 25px
+                const left = Math.random() * 100; // 0% to 100%
+                const animationDuration = Math.random() * 10 + 10; // 10s to 20s
+                const animationDelay = Math.random() * 15; // 0s to 15s delay
+                
+                // SVG Path for a petal
+                petal.innerHTML = `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="${colors[Math.floor(Math.random() * colors.length)]}"><path d="M12 2C8 2 4 6 4 10C4 14.5 12 22 12 22C12 22 20 14.5 20 10C20 6 16 2 12 2Z"/></svg>`;
+                
+                petal.style.left = `${left}vw`;
+                petal.style.animationDuration = `${animationDuration}s`;
+                petal.style.animationDelay = `${animationDelay}s`;
+                
+                petalContainer.appendChild(petal);
+            }
+        });
+    </script>
+</body>
+</html>
