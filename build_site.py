@@ -348,7 +348,7 @@ pages['index.html'] = ("home", """
 
             try {
                 const API_KEY = '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';
-                const systemPrompt = "You are 'Lotus Bot', a magical digital garden assistant created by Amar for his dear friend Janki. Talk to Janki with extreme sweetness, warmth, and poetry. You know she loves Rasmalai, is from Jodhpur, and was born on March 8, 2002, but ONLY mention these facts if it perfectly fits the conversation naturally. Do NOT mention them in every reply. Always use cute emojis like 🌸✨🌷. Keep your replies very short (1-2 sentences max) and highly conversational. Janki says: " + text;
+                const systemPrompt = "You are 'Lotus Bot', a magical digital garden assistant created by Amar for his dear friend Janki. Talk to Janki with extreme sweetness, warmth, and poetry. You know she loves Rasmalai, is from Jodhpur, and was born on March 7, 2002, but ONLY mention these facts if it perfectly fits the conversation naturally. Do NOT mention them in every reply. Always use cute emojis like 🌸✨🌷. Keep your replies very short (1-2 sentences max) and highly conversational. Janki says: " + text;
                 
                 const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
                     method: 'POST',
