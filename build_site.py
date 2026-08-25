@@ -5,7 +5,7 @@ head = """<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Janki's Garden</title>
+    <title>Janaki's Garden</title>
     <!-- Google Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
@@ -77,7 +77,7 @@ def get_navbar(active_page):
 
     <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 lg:px-10 py-4 lg:py-5 max-w-[1600px] mx-auto w-full bg-[#F8F3EC]/90 dark:bg-slate-900/90 backdrop-blur-md shadow-sm transition-colors duration-700">
         <a href="index.html" class="flex items-center gap-2 group cursor-pointer" id="secret-trigger">
-            <h1 class="font-serif text-2xl lg:text-3xl font-medium text-bloom-pink">Janki's Garden</h1>
+            <h1 class="font-serif text-2xl lg:text-3xl font-medium text-bloom-pink">Janaki's Garden</h1>
             <span class="material-symbols-outlined text-bloom-pink group-hover:rotate-12 transition-transform" style="font-size: 26px;">spa</span>
         </a>
         <div class="hidden md:flex items-center gap-10">
@@ -137,14 +137,14 @@ footer = """
             <h2 class="font-serif text-3xl text-bloom-pink mb-6 text-center">A Secret Note Just For You</h2>
             <p class="text-bloom-text dark:text-slate-300 leading-relaxed text-center font-medium opacity-90 mb-6 italic">
                 "Some people make the world a little brighter just by being in it. <br><br>
-                Thank you for being such an amazing friend, for your radiant smile, and for the joy you bring everywhere you go. Keep shining, Janki!"
+                Thank you for being such an amazing friend, for your radiant smile, and for the joy you bring everywhere you go. Keep shining, Janaki!"
             </p>
             <div class="text-center text-sm font-semibold text-bloom-pink">With love, forever. ✨</div>
         </div>
     </div>
 
     <footer class="w-full py-12 lg:py-16 px-6 lg:px-24 flex flex-col items-center gap-6 bg-[#F8F3EC] dark:bg-slate-900/50 relative z-10 border-t border-bloom-pink/10 mt-auto transition-colors duration-700">
-        <div class="font-serif text-2xl text-bloom-pink">Janki's Garden</div>
+        <div class="font-serif text-2xl text-bloom-pink">Janaki's Garden</div>
         <p class="text-sm text-bloom-text dark:text-slate-400 opacity-60 text-center">© 2024 Botanical Bloom. Created with love for my favorite person.</p>
     </footer>
 
@@ -301,9 +301,9 @@ pages['index.html'] = ("home", """
     <section class="relative min-h-[80dvh] flex items-center pb-24">
         <div class="max-w-[1400px] mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 px-6 lg:px-10 items-center relative z-10">
             <div class="reveal relative z-30 pt-4 lg:pt-0 pl-2 lg:pl-16">
-                <h2 class="font-serif text-[55px] md:text-[75px] leading-tight text-bloom-pink mb-4">Dearest Janki</h2>
+                <h2 class="font-serif text-[55px] md:text-[75px] leading-tight text-bloom-pink mb-4">Dearest Janaki</h2>
                 <div class="flex items-end gap-3 max-w-[450px]">
-                    <p class="font-serif text-[24px] md:text-[34px] leading-tight text-bloom-green dark:text-green-200/80">A little corner dedicated to Janki</p>
+                    <p class="font-serif text-[24px] md:text-[34px] leading-tight text-bloom-green dark:text-green-200/80">A little corner dedicated to Janaki</p>
                     <span class="material-symbols-outlined text-bloom-pink opacity-80 pb-1 hidden sm:inline-block text-[36px]">spa</span>
                 </div>
                 <div class="header-divider"><span class="material-symbols-outlined text-bloom-pink opacity-60 text-[20px]">local_florist</span></div>
@@ -316,7 +316,7 @@ pages['index.html'] = ("home", """
             </div>
             <div class="reveal flex justify-center lg:justify-end pr-0 lg:pr-16 relative z-10 mt-8 lg:mt-0">
                 <div class="w-full max-w-[360px] md:max-w-[460px] aspect-[4/5] image-container overflow-hidden shadow-xl relative ring-4 ring-white/30 dark:ring-white/10">
-                    <img src="janki_photo.jpeg" alt="Janki" class="w-full h-full object-cover object-top" />
+                    <img src="janaki_photo.jpeg" alt="Janaki" class="w-full h-full object-cover object-top" />
                 </div>
             </div>
         </div>
@@ -326,7 +326,7 @@ pages['index.html'] = ("home", """
     <div class="fixed bottom-8 right-8 z-50 flex items-center gap-4">
         <!-- Attention grabber tooltip -->
         <div id="chat-tooltip" class="hidden sm:block relative bg-white dark:bg-slate-800 text-bloom-pink dark:text-pink-300 px-4 py-3 rounded-2xl shadow-lg border border-bloom-pink/20 dark:border-white/10 animate-bounce">
-            <p class="text-sm font-medium font-sans">Psst... Janki, check this! ✨</p>
+            <p class="text-sm font-medium font-sans">Psst... Janaki, check this! ✨</p>
             <div class="absolute -right-[6px] top-1/2 -translate-y-1/2 w-3 h-3 bg-white dark:bg-slate-800 border-t border-r border-bloom-pink/20 dark:border-white/10 rotate-45"></div>
         </div>
         
@@ -349,7 +349,7 @@ pages['index.html'] = ("home", """
             <button id="close-chat" class="hover:text-white/70"><span class="material-symbols-outlined">close</span></button>
         </div>
         <div id="chat-messages" class="flex-grow p-5 overflow-y-auto flex flex-col gap-4 text-sm">
-            <div class="flex flex-col gap-1 items-start"><div class="p-3.5 shadow-sm max-w-[85%] leading-relaxed bg-white dark:bg-slate-800 text-bloom-text dark:text-slate-200 border border-bloom-pink/20 dark:border-white/10 rounded-[18px_18px_18px_0px]">Namaste Janki ji! 🌸 I hope your day is as sweet as Rabdi! How are you feeling today?</div></div>
+            <div class="flex flex-col gap-1 items-start"><div class="p-3.5 shadow-sm max-w-[85%] leading-relaxed bg-white dark:bg-slate-800 text-bloom-text dark:text-slate-200 border border-bloom-pink/20 dark:border-white/10 rounded-[18px_18px_18px_0px]">Namaste Janaki ji! 🌸 I hope your day is as sweet as Rabdi! How are you feeling today?</div></div>
         </div>
         <div class="p-4 bg-white/50 dark:bg-slate-800/50 border-t border-bloom-pink/10 dark:border-white/10">
             <form id="chat-form" class="flex items-center gap-2">
@@ -394,7 +394,7 @@ pages['index.html'] = ("home", """
 
             try {
                 const API_KEY = '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';
-                const systemPrompt = "You are 'Lotus Bot', a magical digital garden assistant created by Amar for his dear friend Janki. Talk to Janki with extreme sweetness, warmth, and poetry. You know she loves Rabdi, is from Jodhpur, and was born on March 7, 2002, but ONLY mention these facts if it perfectly fits the conversation naturally. Do NOT mention them in every reply. Always use cute emojis like 🌸✨🌷. Keep your replies very short (1-2 sentences max) and highly conversational. Janki says: " + text;
+                const systemPrompt = "You are 'Lotus Bot', a magical digital garden assistant created by Amar for his dear friend Janaki. Talk to Janaki with extreme sweetness, warmth, and poetry. You know she loves Rabdi, is from Jodhpur, and was born on March 7, 2002, but ONLY mention these facts if it perfectly fits the conversation naturally. Do NOT mention them in every reply. Always use cute emojis like 🌸✨🌷. Keep your replies very short (1-2 sentences max) and highly conversational. Janaki says: " + text;
                 
                 const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
                     method: 'POST',
@@ -437,7 +437,7 @@ pages['about.html'] = ("about", """
     <section class="py-20 px-6 lg:px-24 max-w-4xl mx-auto">
         <div class="reveal text-center space-y-8">
             <span class="material-symbols-outlined text-bloom-green dark:text-green-300/50 text-5xl opacity-50">spa</span>
-            <h2 class="font-serif text-5xl md:text-6xl text-bloom-pink font-semibold">The Essence of Janki</h2>
+            <h2 class="font-serif text-5xl md:text-6xl text-bloom-pink font-semibold">The Essence of Janaki</h2>
             <div class="header-divider justify-center"><span class="material-symbols-outlined text-bloom-pink opacity-60 text-[20px]">local_florist</span></div>
             <p class="text-lg md:text-xl text-bloom-text dark:text-slate-300 leading-relaxed opacity-90 font-medium">
                 Some things are simply known without explanation. The quiet strength she carries, the subtle grace in her steps, the way light seems to catch differently in her presence. <br><br>
@@ -462,8 +462,8 @@ pages['gallery.html'] = ("gallery", """
             <p class="text-bloom-text dark:text-slate-400 font-medium opacity-80">Moments frozen in time, bright and blooming. (Click to zoom)</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="reveal image-container overflow-hidden shadow-lg border border-white/50 dark:border-white/10 h-[400px] cursor-pointer hover:scale-105 transition-transform duration-300" onclick="openLightbox('janki_photo.jpeg')">
-                <img src="janki_photo.jpeg" class="w-full h-full object-cover" />
+            <div class="reveal image-container overflow-hidden shadow-lg border border-white/50 dark:border-white/10 h-[400px] cursor-pointer hover:scale-105 transition-transform duration-300" onclick="openLightbox('janaki_photo.jpeg')">
+                <img src="janaki_photo.jpeg" class="w-full h-full object-cover" />
             </div>
             <div class="reveal glass-card rounded-[2rem] flex flex-col items-center justify-center h-[400px] cursor-pointer hover:bg-bloom-pink/10" onclick="openLightbox('https://images.unsplash.com/photo-1490750967868-88aa4486c946?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
                 <span class="material-symbols-outlined text-bloom-pink text-4xl mb-2 opacity-50">image</span>
@@ -519,7 +519,7 @@ pages['memories.html'] = ("memories", """
                 </div>
                 <div class="reveal glass-card w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-2xl shadow-sm">
                     <time class="font-serif text-bloom-pink font-semibold mb-1">March 7, 2002</time>
-                    <div class="text-bloom-text dark:text-slate-300 font-medium">A flower bloomed in Jodhpur. Happy Birthday Janki!</div>
+                    <div class="text-bloom-text dark:text-slate-300 font-medium">A flower bloomed in Jodhpur. Happy Birthday Janaki!</div>
                 </div>
             </div>
 
@@ -547,7 +547,7 @@ pages['fanwall.html'] = ("fanwall", """
             <div class="reveal glass-card p-8 rounded-3xl relative overflow-hidden group">
                 <div class="absolute -right-4 -top-4 w-24 h-24 bg-bloom-pink/10 rounded-full blur-2xl group-hover:bg-bloom-pink/20 transition-all duration-500"></div>
                 <span class="material-symbols-outlined absolute top-6 right-6 text-bloom-pink/30 text-4xl">format_quote</span>
-                <p class="text-bloom-text dark:text-slate-300 font-medium italic mb-6 leading-relaxed relative z-10">"Janki, you light up every room you walk into! Never stop being your amazing self. The world needs your Jodhpur charm!"</p>
+                <p class="text-bloom-text dark:text-slate-300 font-medium italic mb-6 leading-relaxed relative z-10">"Janaki, you light up every room you walk into! Never stop being your amazing self. The world needs your Jodhpur charm!"</p>
                 <div class="font-serif text-bloom-pink font-semibold">- Your Friend</div>
             </div>
             <div class="reveal glass-card p-8 rounded-3xl relative overflow-hidden group">
